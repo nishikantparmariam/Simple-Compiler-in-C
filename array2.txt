@@ -1,0 +1,26 @@
+startdecl
+
+     decl x[10];
+
+     decl y[10];
+
+enddecl
+
+i=0
+
+end=10
+
+while(i<end){
+
+j=end-i
+
+j=j-1
+
+y[j]=j*j
+x[i]=y[j]
+i = i+1
+
+}
+
+p=1
+res=x[p]
