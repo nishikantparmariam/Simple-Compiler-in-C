@@ -5,6 +5,7 @@ A small compiler written in C using Flex and Bison.
 ## Features
 
 - While Loops
+- If Else
 - For Loops
 - Simple Arithmetic Expressions
 - Array declaration and access
