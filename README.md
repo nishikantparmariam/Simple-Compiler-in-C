@@ -1,23 +1,61 @@
 # Compiler-in-C
 
-A small compiler written in C using Flex and Bison that supports following features -
+A small compiler written in C using Flex and Bison.
+
+## Features
 
 - While Loops
 - For Loops
 - Simple Arithmetic Expressions
 - Array declaration and access
 
-Instructions to run -
+## Instructions to run
 
 ```
   make
 ```
 
-Instructions to run sample program
+## Instructions to run sample program
 
 ```
 make test1
 make test2
+```
+
+## Grammar 
+
+```
+PROGRAM: STATEMENTS 
+STATEMENTS: %empty
+| STATEMENT STATEMENTS 
+```
+
+```
+STATEMENT: WHILE OPENROUNDBRACE VARIABLE LESSTHAN VARIABLE CLOSEROUNDBRACE OPENCURLYBRACE STATEMENTS CLOSECURLYBRACE
+| IF OPENROUNDBRACE VARIABLE LESSTHAN VARIABLE CLOSEROUNDBRACE OPENCURLYBRACE STATEMENTS CLOSECURLYBRACE ELSE OPENCURLYBRACE STATEMENTS CLOSECURLYBRACE
+| FOR OPENROUNDBRACE VARIABLE EQUAL EXPRESSION PIPE VARIABLE LESSTHAN VARIABLE PIPE VARIABLE EQUAL EXPRESSION CLOSEROUNDBRACE OPENCURLYBRACE STATEMENTS CLOSECURLYBRACE
+| VARIABLE EQUAL EXPRESSION 
+| VARIABLE OPENSQUAREBRACE VARIABLE CLOSESQUAREBRACE EQUAL EXPRESSION 
+| STARTDECL DECLARELIST ENDDECL 
+```
+
+```
+DECLARELIST: DECL VARIABLE OPENSQUAREBRACE NUMBER CLOSESQUAREBRACE SEMICOLON DECLARELIST 
+| %empty 
+```
+
+```
+EXPRESSION: X  
+| X PLUS X 
+| X MINUS X 
+| X MULTIPLY X 
+| X DIVIDE X
+| VARIABLE OPENSQUAREBRACE VARIABLE CLOSESQUAREBRACE
+```
+
+```
+X: VARIABLE 
+| NUMBER
 ```
 
 This program is an extension of the program discussed in Lab of the course CS327 Compilers offered at IIT Gandhinagar in AY 2020-21 under the guidance of Prof. Bireshwar Das.
